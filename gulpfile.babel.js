@@ -14,6 +14,7 @@ import replace from "gulp-replace";
 import cssnano from "cssnano";
 import critical from "critical";
 import htmlmin from "gulp-htmlmin";
+import minifycss from "gulp-minify-css";
 
 const browserSync = BrowserSync.create();
 const hugoBin = `./bin/hugo.${process.platform === "win32" ? "exe" : process.platform}`;
@@ -37,7 +38,7 @@ gulp.task("cms", () => {
     .pipe(browserSync.stream())
 });
 
-gulp.task("build", ["css", "js", "hugo", "cms", "critical"]);
+gulp.task("build", ["css", "js", "hugo", "cms"]);
 gulp.task("build-preview", ["css", "js", "hugo-preview"]);
 
 gulp.task("css", () => (
@@ -47,6 +48,7 @@ gulp.task("css", () => (
       cssnext(),
       cssnano(),
     ]))
+    .pipe(minifycss({advanced:false}))
     .pipe(gulp.dest("./dist/css"))
     .pipe(browserSync.stream())
 ));
@@ -63,26 +65,6 @@ gulp.task("js", (cb) => {
     browserSync.reload();
     cb();
   });
-});
-
-gulp.task('critical', function (cb) {
-    critical.generate({
-        inline: true,
-        base: 'dist/',
-        src: 'index.html',
-        dest: 'index.html',
-        css: ['dist/css/main.css'],
-        width: 320,
-        height: 480,
-        minify: true,
-        extract: true,
-    });
-});
-
-gulp.task('minify', function() {
-  return gulp.src('dist/*.html')
-    .pipe(htmlmin({collapseWhitespace: true}))
-    .pipe(gulp.dest('dist'));
 });
 
 gulp.task("svg", () => {
