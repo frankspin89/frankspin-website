@@ -15,6 +15,7 @@ import cssnano from "cssnano";
 import critical from "critical";
 import htmlmin from "gulp-htmlmin";
 import minifycss from "gulp-minify-css";
+import minify from "gulp-minifier";
 
 const browserSync = BrowserSync.create();
 const hugoBin = `./bin/hugo.${process.platform === "win32" ? "exe" : process.platform}`;
@@ -65,6 +66,20 @@ gulp.task("js", (cb) => {
     browserSync.reload();
     cb();
   });
+});
+
+gulp.task('minify', ['build'], function() {
+  return gulp.src('dist/**/*').pipe(minify({
+    minify: true,
+    collapseWhitespace: true,
+    conservativeCollapse: true,
+    minifyJS: true,
+    minifyCSS: true,
+    getKeptComment: function (content, filePath) {
+        var m = content.match(/\/\*![\s\S]*?\*\//img);
+        return m && m.join('\n') + '\n' || '';
+    }
+  })).pipe(gulp.dest('dist'));
 });
 
 gulp.task("svg", () => {
