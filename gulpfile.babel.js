@@ -69,7 +69,7 @@ gulp.task("js", (cb) => {
 });
 
 
-gulp.task('critical', function (cb) {
+gulp.task('critical', ['minify'], function (cb) {
     critical.generate({
         inline: true,
         base: 'dist/',
