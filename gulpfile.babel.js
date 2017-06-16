@@ -68,7 +68,20 @@ gulp.task("js", (cb) => {
   });
 });
 
-gulp.task('minify', ['build'], function() {
+
+gulp.task('critical', function (cb) {
+    critical.generate({
+        inline: true,
+        base: 'dist/',
+        src: 'index.html',
+        dest: 'index.html',
+        width: 320,
+        height: 480,
+        minify: true
+    });
+});
+
+gulp.task('minify', ['build', critical], function() {
   return gulp.src('dist/**/*').pipe(minify({
     minify: true,
     collapseWhitespace: true,
