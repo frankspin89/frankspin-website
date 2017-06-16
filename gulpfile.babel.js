@@ -37,7 +37,7 @@ gulp.task("cms", () => {
     .pipe(browserSync.stream())
 });
 
-gulp.task("build", ["css", "js", "hugo", "cms"]);
+gulp.task("build", ["css", "js", "hugo", "cms", "critical"]);
 gulp.task("build-preview", ["css", "js", "hugo-preview"]);
 
 gulp.task("css", () => (
@@ -65,7 +65,7 @@ gulp.task("js", (cb) => {
   });
 });
 
-gulp.task('critical', ['build'], function (cb) {
+gulp.task('critical', function (cb) {
     critical.generate({
         inline: true,
         base: 'dist/',
