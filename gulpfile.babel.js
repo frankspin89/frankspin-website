@@ -81,7 +81,7 @@ gulp.task('critical', function (cb) {
     });
 });
 
-gulp.task('minify', ['build', critical], function() {
+gulp.task('minify', ['build', "critical"], function() {
   return gulp.src('dist/**/*').pipe(minify({
     minify: true,
     collapseWhitespace: true,
