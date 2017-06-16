@@ -1,0 +1,16 @@
+.c-content-section {
+  margin: var(--space-stack-800);
+  font-size: var(--font-size-600);
+  line-height: var(--line-height-600);
+  @media (--medium-up) {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-gap: 10px;
+  }
+}
+
+.c-content-section__title {
+  text-transform: uppercase;
+  font-size: var(--font-size-default);
+  letter-spacing: var(--letter-spacing-600);
+}

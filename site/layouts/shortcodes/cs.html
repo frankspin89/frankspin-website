@@ -1,0 +1,8 @@
+<section class="c-content-section">
+  {{ if .Get "title" }}
+  <h2 class="c-content-section__title">{{ .Get "title" }}</h2>
+  {{ end}}
+  <div class="c-content-section__text">
+    {{ .Inner }}
+  </div>
+</section>

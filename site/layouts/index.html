@@ -1,7 +1,9 @@
 {{ partial "head" . }}
 
-{{ partial "nav" . }}
+<!--{{ partial "nav" . }}-->
 
+<!--{{ partial "content-section" (dict "title" "About me" "text" "<p>Hello, I’m # Frank Spin, a Dutch Designer and Front-end developer. I focus on keeping my work clean, simple and elegant. I had the pleasure to work with great clients the past five years. My speciality is bringing design and development closer together.</p><p> Contact me if you need help on your next project. Want to know me better? You can then visit my blog our read my testimonials.</p>" ) . }}-->
+<!--
 {{ partial "jumbotron" (dict "imageUrl" "/img/home/jumbotron.jpg" "title" "Great coffee with a conscience" "subtitle" "Support sustainable farming while enjoying a cup") }}
 
 {{ partial "short-text" (dict "heading" "Why Kaldi?" "text" "Kaldi is the coffee store for everyone who believes that great coffee shouldn't just taste good, it should do good too. We source all of our beans directly from small scale sustainable farmers and make sure part of the profits are reinvested in their communities.")}}
@@ -12,4 +14,26 @@
 
 {{ partial "blog" . }}
 
-{{ partial "footer" . }}
+{{ partial "footer" . }}-->
+
+{{ partial "hero" (dict "imageUrl" "/img/home/hero.png") }}
+
+<div class="c-wrapper">
+  <div class="c-layout">
+    {{range where .Data.Pages "Type" "home"}} {{.Content }} {{ end }}
+  </div>
+</div>
+
+<div class="c-wrapper c-wrapper--brand">
+  <div class="c-layout c-layout--space">
+    <section class="c-content-section">
+      <h2 class="c-content-section__title">Testimonials</h2>
+      <div class="c-content-section__text">
+        {{range where .Data.Pages "Type" "testimonial"}} 
+          {{.Content }} {{.Title}}
+          {{ partial "testimonial"}} 
+        {{ end }}
+      </div>
+    </section>  
+  </div>
+</div>
