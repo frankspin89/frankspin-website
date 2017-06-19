@@ -17,10 +17,12 @@
    --line-height-600: 2em;
    --letter-spacing-default: 1;
    --letter-spacing-600: .2em;
+   --letter-spacing-500: .1em;
 
 
 
    --space-default: var(--font-size-default);
+   --space-600: calc(var(--space-default) * 2);
 
    --site-max-width: 1140px;
 

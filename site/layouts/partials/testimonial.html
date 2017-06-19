@@ -1,1 +1,14 @@
-<h1>testing</h1>
+<div class="c-testimonial">
+  <blockquote class="c-testimonial__quote">
+    <div class="c-testimonial_content">
+    <p>" {{.Param "excerpt"}} "</p>
+    </div>
+    <cite class="c-testimonial__footer">
+    <img src="{{.Param "picture"}}" class="c-testimonial__image" alt="">
+    <span class="c-testimonial__meta">
+      <span class="c-testimonial__name">{{.Title}}</span>
+      <span class="c-testimonial__function">{{.Param "function"}}</span>
+    </span>
+    </cite>
+  </blockquote>
+</div>
