@@ -2,6 +2,10 @@
 
 }
 
+.c-testimonial {
+  margin: var(--space-stack-400);
+}
+
 .c-testimonial__quote {
   font-style: italic;
 }
@@ -19,7 +23,8 @@
 .c-testimonial__image {
   width: 120px;
   height: 120px;
-  margin-right: var(--space-600)
+  margin-right: var(--space-600);
+  border-radius:  50%;
 }
 
 .c-testimonial__name {
